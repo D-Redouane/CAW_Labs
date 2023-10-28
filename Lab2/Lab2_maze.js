@@ -3,18 +3,59 @@ document.addEventListener("DOMContentLoaded", function () {
     var end = document.getElementById("end");
     var boundary = document.querySelectorAll(".boundary");
     var status = document.getElementById("status");
+    var timer = document.getElementById("time");
+    var history = document.getElementById("history");
     var gameStarted = false;
     var holdingMouse = false;
+    var startTime;
+    var endTime;
+
+    function startTimer() {
+        startTime = Date.now();
+        setInterval(updateTimer, 10); // Update the timer every 10 milliseconds
+    }
+
+    function updateTimer() {
+        if (gameStarted) {
+            var currentTime = Date.now() - startTime;
+            var minutes = Math.floor((currentTime % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((currentTime % (1000 * 60)) / 1000);
+            var milliseconds = currentTime % 1000;
+
+            timer.textContent = formatTime(minutes) + ":" + formatTime(seconds) + ":" + formatTime(milliseconds, true);
+        }
+    }
+
+    function formatTime(time, isMilliseconds = false) {
+        if (isMilliseconds) {
+            return time < 10 ? "00" + time : time < 100 ? "0" + time : time;
+        } else {
+            return time < 10 ? "0" + time : time;
+        }
+    }
+
+    function addHistory(result, time) {
+        var entry = document.createElement("div");
+        entry.textContent = result + " - " + formatTime(time, true); // Display time in minutes:seconds:milliseconds
+        if (result === "win") {
+            entry.style.color = "green";
+        } else {
+            entry.style.color = "red";
+        }
+        history.appendChild(entry);
+    }
 
     // Function to start the game when 'S' is held (not clicked)
     document.addEventListener("mousedown", function (event) {
         if (event.button === 0 && event.target.id === 'start') {
             gameStarted = true;
             holdingMouse = true;
-            status.textContent = "Move your mouse to the end to win!";
+            status.textContent = "Move your mouse to the end to win , hold your mouse!";
             for (var i = 0; i < boundary.length; i++) {
                 boundary[i].classList.remove("youlose");
+                boundary[i].classList.remove("youwin");
             }
+            startTimer();
         }
     });
 
@@ -28,6 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 status.textContent = "You lose!";
                 gameStarted = false;
+                endTime = Date.now() - startTime;
+                addHistory("lose", endTime);
             }
         }
     });
@@ -42,6 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 status.textContent = "You lose!";
                 gameStarted = false;
+                endTime = Date.now() - startTime;
+                addHistory("lose", endTime);
             }
         });
     }
@@ -53,6 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             status.textContent = "You win!";
             gameStarted = false;
+            endTime = Date.now() - startTime;
+            addHistory("win", endTime);
         }
     });
 
@@ -71,6 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 status.textContent = "You lose!";
                 gameStarted = false;
+                endTime = Date.now() - startTime;
+                addHistory("lose", endTime);
             }
         }
     });
