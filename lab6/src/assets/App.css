@@ -1,0 +1,244 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.card button {
+  margin-right: 1em; /* Adjust the margin as needed */
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.go-back-button {
+  background-color: #1a1a1a; /* Adjust the background color as needed */
+  color: #fff; /* Adjust the text color as needed */
+  border-radius: 5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 1em; /* Adjust the top distance as needed */
+  left: 1em; /* Adjust the left distance as needed */
+}
+
+.go-back-button button {
+  display: flex;
+  align-items: center;
+
+  width: 7rem;
+  height: 4rem;
+}
+
+.go-back-button:hover{
+  border-color: #646cff;
+}
+
+.go-back-button svg {
+  margin-right: 0.5em; /* Adjust the margin as needed */
+}
+
+
+
+.line {
+  border-left: 1px solid #000; /* Adjust the border color as needed */
+  height: 50vh; /* Adjust the height of the line as needed */
+  margin: 0 10px; /* Adjust the margin as needed */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-container,
+.counter-container {
+  display: block;
+  align-items: center;
+  position: relative; /* Add this to make the absolute positioning work */
+  padding: 2rem;
+}
+
+.flexdiv{
+  display: flex;
+}
+
+.counter-container {
+  display: block;
+  align-items: center;
+  position: relative; /* Add this to make the absolute positioning work */
+}
+
+.buttons-container p {
+  margin-left: 10px; /* Adjust the margin as needed */
+}
+
+
+
+.theme-switch-container {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+}
+
+.theme-switch-container:hover{
+  border-color: #646cff;
+}
+
+.theme-switch-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #1a1a1a;
+}
+
+.theme-switch-button:hover{
+  border-color: #646cff;
+}
+
+.theme-switch-button svg {
+  margin-right: 8px;
+}
+
+
+.dark-svg {
+  fill: #fff;
+}
+
+.light-svg {
+  fill: #333; 
+}
+
+.button-margin {
+  margin-left: 8px; /* Adjust the spacing as needed */
+}
+
+
+
+
+
+.task-item {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 0.2rem;
+  color: #333; /* Set the text color for dark theme */
+}
+
+.task-link {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #646cff; /* Set the link color for dark theme */
+}
+
+.delete-button {
+  min-width: 100px;
+  background-color: #ff6464; /* Set the button background color for dark theme */
+  color: #fff; /* Set the button text color for dark theme */
+  margin-right: 0.7rem;
+}
+
+/* New styles for checkbox */
+.checkbox-container {
+  margin-right: 0.5rem; /* Adjust the margin as needed */
+}
+
+.checkbox-input {
+  width: 1.5rem; /* Set the width of the checkbox */
+  height: 1.5rem; /* Set the height of the checkbox */
+  border-radius: 2rem;
+  background-color: #1a1a1a;
+}
+
+/* New styles for disabled buttons */
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Additional style for selected tasks */
+.selected {
+  border: 2px solid #646cff;
+  background-color: #f0f0f0;
+}
+
+/* Dark theme styles */
+body.dark-theme {
+  background-color: #242424;
+  color: #f9f9f9;
+}
+
+
+
+
+
+/* New styles for disabled buttons */
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  /* You can customize the styles further based on your design preferences */
+}
+
+/* Additional style for selected tasks */
+.selected {
+  border: 2px solid #646cff;
+  background-color: #f0f0f0;
+}
+
+.buttons-container {
+  margin-top: 20px;
+}
+
+.line {
+  border-top: 2px solid #ccc;
+  margin: 20px 0;
+}
+
+.counter-container {
+  margin-top: 20px;
+}
