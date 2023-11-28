@@ -2,12 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const TaskItem = ({ task, index, selectedTasks, toggleTaskSelection, deleteTask }) => {
-
-  const handleClick = () => {
-    // Redirect to the Task component with the corresponding index
-//     history.push(`/TaskList/${index}`);
-  };
-
   return (
     <div key={index} className='flexdiv'>
       <div className={`task-item ${selectedTasks.includes(index) ? 'selected' : ''}`}>
@@ -17,8 +11,9 @@ const TaskItem = ({ task, index, selectedTasks, toggleTaskSelection, deleteTask 
           checked={selectedTasks.includes(index)}
           className='checkbox-input'
         />
-        <Link to={`/TaskList/${index}`} className="task-link">
-          {task}
+        {/* Use Link to redirect to Task component with corresponding index */}
+        <Link to={`/TaskList/${task.id}`} className="task-link">
+          {task.name}
         </Link>
         <button onClick={() => deleteTask(index)}>Delete</button>
       </div>

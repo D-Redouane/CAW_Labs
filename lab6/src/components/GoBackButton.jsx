@@ -1,30 +1,29 @@
-// Import necessary dependencies
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-// Define your reusable component
 const GoBackButton = () => {
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1); // Navigate back one step in the history
+  };
+
   return (
-    <Link to="/" className="go-back-button">
-      <button>
+    <div className="go-back-button">
+      <button onClick={goBack}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M15 19l-7-7 7-7"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
         </svg>
         <h4>Go Back</h4>
       </button>
-    </Link>
+    </div>
+      
   );
 };
 
-// Export the component for use in other files
 export default GoBackButton;

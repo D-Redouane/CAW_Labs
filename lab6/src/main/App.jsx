@@ -18,7 +18,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/TaskList" element={<TaskList />} />
-          <Route path="/TaskList/:index" element={<Task />} />  {/* Dynamic index parameter */}
+          <Route path="/TaskList/:id" element={<Task />} />  {/* Dynamic index parameter */}
         </Routes>
       </Router>
     </>

@@ -1,19 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NewTaskForm from './components/NewTaskForm';
 import GoBackButton from '../components/GoBackButton';
 import TaskItem from './components/TaskItem';
 
 function TaskList() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      name: 'task1',
+      alldone: false,
+      sub: [
+        {
+          name: 'subtask1 of task1',
+          done: true,
+        },
+        {
+          name: 'subtask2 of task1',
+          done: false,
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: 'task2',
+      alldone: true,
+      sub: [
+        {
+          name: 'subtask1 of task2',
+          done: true,
+        },
+        {
+          name: 'subtask2 of task2',
+          done: true,
+        },
+      ],
+    },
+  ]);
   const [selectedTasks, setSelectedTasks] = useState([]);
   const navigate = useNavigate();
 
-  const addTask = (task) => {
-    if (task.trim() !== '') {
-      setTasks([...tasks, task]);
-    }
+  // Load tasks from localStorage on component mount
+  useEffect(() => {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    setTasks(storedTasks);
+  }, []);
+
+  // Save tasks to localStorage whenever tasks change
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  const addTask = (newTask) => {
+    const newTaskObject = {
+      id: tasks.length + 1, // Assign a new unique id
+      name: newTask,
+      alldone: false,
+      sub: [],
+    };
+
+    setTasks([...tasks, newTaskObject]);
   };
+
+  // const deleteTask = (taskId) => {
+  //   const updatedTasks = tasks.filter((task) => task.id !== taskId);
+  //   setTasks(updatedTasks);
+  // };
 
   const deleteTask = (index) => {
     const updatedTasks = tasks.filter((_, i) => i !== index);
@@ -55,13 +107,14 @@ function TaskList() {
               toggleTaskSelection={toggleTaskSelection}
               deleteTask={deleteTask}
             />
+            
           ))}
           <button
             onClick={deleteSelectedTasks}
             disabled={selectedTasks.length === 0}
             className='delete-button'
           >
-            Delete Selected
+            Delete {selectedTasks.length} {selectedTasks.length === 1 ? 'item' : 'items'}
           </button>
           <button
             onClick={deleteAllTasks}

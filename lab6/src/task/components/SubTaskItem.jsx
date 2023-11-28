@@ -1,22 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const SubTaskItem = ({ task, index, selectedTasks, toggleTaskSelection, deleteTask }) => {
-
+const SubTaskItem = ({ subtask, index, selectedSubTasks, toggleSubTaskSelection, deleteSubTask,subtaskname }) => {
+  console.log(subtask)
   return (
     <div key={index} className='flexdiv'>
-      <div className={`task-item ${selectedTasks.includes(index) ? 'selected' : ''}`}>
+      <div className={`task-item ${selectedSubTasks.includes(index) ? 'selected' : ''}`}>
         <input
           type="checkbox"
-          onChange={() => toggleTaskSelection(index)}
-          checked={selectedTasks.includes(index)}
+          onChange={() => toggleSubTaskSelection(index)}
+          checked={selectedSubTasks.includes(index)}
           className='checkbox-input'
         />
-        <Link to={`/TaskList/${index}`} className="task-link">
-          {task}
-        </Link>
-        <button onClick={handleClick}>View Details</button>
-        <button onClick={() => deleteTask(index)}>Delete</button>
+        <div className="task-link">{subtaskname}</div>
+        <button onClick={() => deleteSubTask(index)}>Delete</button>
       </div>
     </div>
   );
