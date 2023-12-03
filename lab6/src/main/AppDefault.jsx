@@ -1,5 +1,3 @@
-// App.jsx
-
 import React from 'react';
 import reactLogo from '../assets/react.svg';
 import viteLogo from '../assets/vite.svg';
@@ -17,11 +15,12 @@ function Main() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      
+      <br></br>
       <h1>Vite + React</h1>
-      <div className="card">This is Lab6 solution</div>
-
-      <div className="card">
+      <br></br>
+      <div>This is Lab6 solution</div>
+      <br></br>
+      <div>
         <Link to="/TaskList">
           <button>Go To TaskList</button>
         </Link>

@@ -38,7 +38,7 @@ function TaskList() {
     },
   ]);
   const [selectedTasks, setSelectedTasks] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Load tasks from localStorage on component mount
   useEffect(() => {
@@ -91,13 +91,24 @@ function TaskList() {
     setSelectedTasks([]);
   };
 
+  const toggleTaskDone = (taskIndex) => {
+    const updatedTasks = tasks.map((task, index) => {
+      if (index === taskIndex) {
+        return { ...task, alldone: !task.alldone };
+      }
+      return task;
+    });
+  
+    setTasks(updatedTasks);
+  };
+
   return (
     <div className="container">
       <GoBackButton />
 
       <div className="buttons-container">
         <div>
-          <h1>Task List</h1>
+          <h2>Task List</h2>
           {tasks.map((task, index) => (
             <TaskItem
               key={index}
@@ -106,6 +117,7 @@ function TaskList() {
               selectedTasks={selectedTasks}
               toggleTaskSelection={toggleTaskSelection}
               deleteTask={deleteTask}
+              toggleTaskDone={toggleTaskDone}
             />
             
           ))}

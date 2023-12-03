@@ -91,6 +91,17 @@ button:focus-visible {
     border: 1px solid #ccc; /* Set your desired border color and style */
     /* Add any other styles you want to customize */
   }
+
+  .task-item {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: rgba(234, 234, 234, 0.87);
+    border-radius: 0.2rem;
+    color: #ffffff; /* Set the text color for dark theme */
+  }
 }
 
 .checkbox-input.lighttheme{
@@ -138,6 +149,8 @@ a:hover {
 button {
   background-color: var(--button-background-color-dark);
   color: var(--button-text-color-dark);
+  margin-right: 0.3rem;
+  margin-left: 0.3rem;
 }
 
 body.light-theme button {

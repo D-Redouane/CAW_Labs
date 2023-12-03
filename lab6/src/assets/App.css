@@ -46,9 +46,9 @@
 }
 
 .go-back-button {
-  background-color: #1a1a1a; /* Adjust the background color as needed */
+  /* background-color: #1a1a1a; Adjust the background color as needed */
   color: #fff; /* Adjust the text color as needed */
-  border-radius: 5rem;
+  border-radius: 0.2rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -75,10 +75,35 @@
 
 
 
-.line {
-  border-left: 1px solid #000; /* Adjust the border color as needed */
-  height: 50vh; /* Adjust the height of the line as needed */
-  margin: 0 10px; /* Adjust the margin as needed */
+
+
+
+@media (prefers-color-scheme: dark) {
+  .line {
+    border-left: 1px solid #000000; /* Adjust the border color for dark mode */
+    height: 50vh; /* Adjust the height of the line for dark mode */
+    margin: 0 10px; /* Adjust the margin for dark mode */
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .line {
+    border-left: 1px solid #ffffff; /* Adjust the border color for light mode */
+    height: 50vh; /* Adjust the height of the line for light mode */
+    margin: 0 10px; /* Adjust the margin for light mode */
+  }
+}
+
+
+
+
+
+
+
+
+
+.line.light-theme {
+  border-left: 1px solid #000000;
 }
 
 .container {
@@ -160,7 +185,7 @@
 .task-item {
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 500px;
   margin: 0.5rem;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.87);
@@ -174,6 +199,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   color: #646cff; /* Set the link color for dark theme */
+  font-size: 30px;
 }
 
 .delete-button {
@@ -235,7 +261,7 @@ button:disabled {
 }
 
 .line {
-  border-top: 2px solid #ccc;
+  border-left: 2px solid rgb(129, 129, 129);
   margin: 20px 0;
 }
 

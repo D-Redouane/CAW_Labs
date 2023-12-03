@@ -1,8 +1,7 @@
-// NewTaskForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function NewTaskForm({ addTask }) {
+const NewTaskForm=({ addTask })=> {
   const [taskText, setTaskText] = useState('');
   const navigate = useNavigate();
 
@@ -19,6 +18,8 @@ function NewTaskForm({ addTask }) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Task Add Form</h2>
+      <br />
       <label>
         New Task 👇
       </label>
