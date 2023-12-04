@@ -9,14 +9,17 @@ function TaskList() {
     {
       id: 1,
       name: 'task1',
+      description:'description1',
       alldone: false,
       sub: [
         {
           name: 'subtask1 of task1',
+          description:'description1',
           done: true,
         },
         {
           name: 'subtask2 of task1',
+          description:'description1',
           done: false,
         },
       ],
@@ -24,14 +27,17 @@ function TaskList() {
     {
       id: 2,
       name: 'task2',
+      description:'description1',
       alldone: true,
       sub: [
         {
           name: 'subtask1 of task2',
+          description:'description1',
           done: true,
         },
         {
           name: 'subtask2 of task2',
+          description:'description1',
           done: true,
         },
       ],
@@ -51,15 +57,21 @@ function TaskList() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
-  const addTask = (newTask) => {
-    const newTaskObject = {
-      id: tasks.length + 1, // Assign a new unique id
-      name: newTask,
-      alldone: false,
-      sub: [],
-    };
-
-    setTasks([...tasks, newTaskObject]);
+  const addTask = (name,description) => {
+    if(name==null || name==''){
+      // return null
+    }
+    else{
+      const newTaskObject = {
+        id: tasks.length + 1, // Assign a new unique id
+        name: name,
+        description:description,
+        alldone: false,
+        sub: [],
+      };
+  
+      setTasks([...tasks, newTaskObject]);
+    }
   };
 
   // const deleteTask = (taskId) => {

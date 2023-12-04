@@ -3,29 +3,48 @@ import { useNavigate } from 'react-router-dom';
 
 const NewSubTaskForm=({ addSubTask ,alldone})=> {
   const [subtaskText, setSubtaskText] = useState('');
+  const [subtaskDescription, setSubtaskDescription] = useState('');
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addSubTask(subtaskText);
+    addSubTask(subtaskText,subtaskDescription);
     setSubtaskText('');
+    setSubtaskDescription('');
   };
 
-  const handleChange = (e) => {
+  const handleChangeText = (e) => {
     setSubtaskText(e.target.value);
   };
 
+  const handleChangedescription = (e) => {
+    setSubtaskDescription(e.target.value);
+  };
+
   return (
-    
+
     <form onSubmit={handleSubmit}>
-      <h2>SubTask Add Form</h2>
+      <h2>Add New Sub Task Form 👇</h2>
       <br />
       <label>
-        New Sub Task 👇
+        Text :
       </label>
       <br />
       <input type="text" 
         value={subtaskText} 
-        onChange={handleChange}
+        onChange={handleChangeText}
+        disabled={alldone}
+        required
+      />
+      <br />
+      <br />
+      <label>
+        description :
+      </label>
+      <br />
+      <input type="text" 
+        value={subtaskDescription} 
+        onChange={handleChangedescription}
         disabled={alldone}
       />
       <br />

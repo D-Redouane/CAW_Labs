@@ -16,8 +16,27 @@ const TaskItem = ({ task, index, selectedTasks, toggleTaskSelection,toggleTaskDo
 
         {console.log(task)}
         <Link to={`/TaskList/${task.id}`} className="task-link">
-          <div className={`task-link ${task.alldone ? 'subtask-done' : ''}`}>
-            {task.alldone ? <del>{task.name}</del> : task.name}
+          <div className={`task-link ${task.done ? 'subtask-done' : ''}`}>
+            {task.alldone ? 
+
+              <del>
+                {task.name}
+                <br />
+                {task.description?
+                  <h4>{task.description}</h4>
+                :null}
+              </del>
+
+            :
+
+              <div>
+                <b>{task.name}</b>
+                {task.description?
+                  <h6 style={{fontSize: '12px',color: 'gray',maring:'0', padding:'0'}}>{task.description}</h6>
+                :null}
+              </div>
+            
+            }
           </div>
         </Link>
 

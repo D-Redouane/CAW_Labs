@@ -22,7 +22,26 @@ const SubTaskItem = ({
         </>
 
         <div className={`task-link ${subtask.done ? 'subtask-done' : ''}`}>
-          {subtask.done ? <del>{subtaskname}</del> : subtaskname}
+          {subtask.done ? 
+
+            <del>
+              {subtaskname}
+              <br />
+              {subtask.description?
+                <h4>{subtask.description}</h4>
+              :null}
+            </del>
+
+          :
+
+            <div>
+              <b>{subtaskname}</b>
+              {subtask.description?
+                <h6 style={{fontSize: '12px',color: 'gray',maring:'0', padding:'0'}}>{subtask.description}</h6>
+              :null}
+            </div>
+          
+          }
         </div>
 
         {subtask.done ? null : (

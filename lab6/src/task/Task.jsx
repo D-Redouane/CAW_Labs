@@ -10,13 +10,19 @@ function Task({ onDelete }) {
   // const [subtaskText, setSubtaskText] = useState('');
   const [selectedSubTasks, setSelectedSubTasks] = useState([]);
 
-  const addSubtask = (subtaskText) => {
+  const addSubtask = (subtaskText,subtaskDescription) => {
     const updatedTasks = tasks.map(task => {
       if (task.id.toString() === id) {
-        return {
-          ...task,
-          sub: [...task.sub, { name: subtaskText, done: false }],
-        };
+        if(subtaskText==null || subtaskText==''){
+          // return null
+        }
+        else{
+          return {
+            ...task,
+            sub: [...task.sub, { name: subtaskText,description:subtaskDescription ,done: false }],
+          };
+        }
+        
       }
       return task;
     });
