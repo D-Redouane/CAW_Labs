@@ -44,6 +44,7 @@ function TaskList() {
     },
   ]);
   const [selectedTasks, setSelectedTasks] = useState([]);
+  const [selectAll, setSelectAll] = useState(false);
   // const navigate = useNavigate();
 
   // Load tasks from localStorage on component mount
@@ -85,10 +86,20 @@ function TaskList() {
   };
 
   const toggleTaskSelection = (index) => {
-    if (selectedTasks.includes(index)) {
-      setSelectedTasks(selectedTasks.filter((selectedIndex) => selectedIndex !== index));
+    if (selectAll) {
+      // If selectAll is true, toggle individual task
+      if (selectedTasks.includes(index)) {
+        setSelectedTasks(selectedTasks.filter((selectedIndex) => selectedIndex !== index));
+      } else {
+        setSelectedTasks([...selectedTasks, index]);
+      }
     } else {
-      setSelectedTasks([...selectedTasks, index]);
+      // If selectAll is false, toggle individual task
+      if (selectedTasks.includes(index)) {
+        setSelectedTasks(selectedTasks.filter((selectedIndex) => selectedIndex !== index));
+      } else {
+        setSelectedTasks([...selectedTasks, index]);
+      }
     }
   };
 
@@ -106,12 +117,32 @@ function TaskList() {
   const toggleTaskDone = (taskIndex) => {
     const updatedTasks = tasks.map((task, index) => {
       if (index === taskIndex) {
-        return { ...task, alldone: !task.alldone };
+        const updatedTask = { ...task, alldone: !task.alldone };
+        if (updatedTask.alldone) {
+          const updatedSubtasks = updatedTask.sub.map((subtask) => ({
+            ...subtask,
+            done: true,
+          }));
+  
+          updatedTask.sub = updatedSubtasks;
+        }
+        return updatedTask;
       }
+  
       return task;
     });
-  
     setTasks(updatedTasks);
+  };
+
+  const toggleSelectAll = () => {
+    setSelectAll((prevSelectAll) => {
+      if (!prevSelectAll) {
+        setSelectedTasks([...Array(tasks.length).keys()]);
+      } else {
+        setSelectedTasks([]);
+      }
+      return !prevSelectAll;
+    });
   };
 
   return (
@@ -133,6 +164,15 @@ function TaskList() {
             />
             
           ))}
+
+          <button 
+            checked={selectAll}
+            onClick={toggleSelectAll}
+            className='delete-button'
+            disabled={tasks.length === 0}
+          >
+            {selectedTasks.length===0 ? 'Select All' : 'Unselect All'}
+          </button>
           <button
             onClick={deleteSelectedTasks}
             disabled={selectedTasks.length === 0}

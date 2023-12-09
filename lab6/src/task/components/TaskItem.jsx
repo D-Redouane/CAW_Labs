@@ -23,7 +23,7 @@ const TaskItem = ({ task, index, selectedTasks, toggleTaskSelection,toggleTaskDo
                 {task.name}
                 <br />
                 {task.description?
-                  <h4>{task.description}</h4>
+                  <h6 style={{fontSize: '12px',color: 'gray',maring:'0', padding:'0'}}>{task.description}</h6>
                 :null}
               </del>
 
@@ -49,6 +49,20 @@ const TaskItem = ({ task, index, selectedTasks, toggleTaskSelection,toggleTaskDo
         <button onClick={() => deleteTask(index)}>Delete 🗑</button>
 
         {task.alldone ? (
+          task.description?
+          <>
+            <span style={{
+              position: 'absolute',
+              bottom: '82%',
+              left: '102%',
+              color: 'green',
+              transform: 'translateX(-100%)',
+              fontSize: '30px',
+              padding: '0.2rem 0.5rem',  // Adjust padding as needed
+              borderRadius: '0.25rem',  // Adjust border-radius as needed
+            }}>✔</span>
+          </>
+          :
           <>
             <span style={{
               position: 'absolute',

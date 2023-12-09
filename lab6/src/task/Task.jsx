@@ -9,20 +9,19 @@ function Task({ onDelete }) {
   const [tasks, setTasks] = useState([]);
   // const [subtaskText, setSubtaskText] = useState('');
   const [selectedSubTasks, setSelectedSubTasks] = useState([]);
+  const [selectAll, setSelectAll] = useState(false);
 
-  const addSubtask = (subtaskText,subtaskDescription) => {
-    const updatedTasks = tasks.map(task => {
+  const addSubtask = (subtaskText, subtaskDescription) => {
+    const updatedTasks = tasks.map((task) => {
       if (task.id.toString() === id) {
-        if(subtaskText==null || subtaskText==''){
-          // return null
-        }
-        else{
+        if (subtaskText == null || subtaskText === '') {
+          return task; // Return the unchanged task
+        } else {
           return {
             ...task,
-            sub: [...task.sub, { name: subtaskText,description:subtaskDescription ,done: false }],
+            sub: [...task.sub, { name: subtaskText, description: subtaskDescription, done: false }],
           };
         }
-        
       }
       return task;
     });
@@ -31,7 +30,7 @@ function Task({ onDelete }) {
   };
 
   const deleteSubtask = (index) => {
-    const updatedTasks = tasks.map(task => {
+    const updatedTasks = tasks.map((task) => {
       if (task.id.toString() === id) {
         const updatedSubtasks = task.sub.filter((_, i) => i !== index);
         return {
@@ -117,32 +116,45 @@ function Task({ onDelete }) {
     setTasks(updatedTasks);
   };
 
+  const toggleSelectAll = () => {
+    setSelectAll((prevSelectAll) => {
+      if (!prevSelectAll) {
+        setSelectedSubTasks([...Array(tasks.find((task) => task.id.toString() === id)?.sub.length).keys()]);
+      } else {
+        setSelectedSubTasks([]);
+      }
+      return !prevSelectAll;
+    });
+  };
+
   return (
     <div className="container">
       <GoBackButton />
 
       <div>
         <div>
-          <h1>{id} - {tasks.map((task) => {
-            if (task.id.toString() === id) {
-              return task.name
-            }
-            return null;
-          })}</h1>
-          <h5>{tasks.map((task) => {
+          <h1>
+            {id} -{' '}
+            {tasks.map((task) => {
               if (task.id.toString() === id) {
-                if(task.alldone)
-                {
-                  return (
-                    'Task Succesfully done ✅'
-                  );
+                return task.name;
+              }
+              return null;
+            })}
+          </h1>
+          <h5>
+            {tasks.map((task) => {
+              if (task.id.toString() === id) {
+                if (task.alldone) {
+                  return 'Task Successfully done ✅';
                 }
               }
               // Ensure you have a default return value if the condition is not met
               return null;
-            })}</h5>
+            })}
+          </h5>
         </div>
-        <div className='container'>
+        <div className="container">
           <div className="buttons-container">
             <div>
               <h2>SubTask List</h2>
@@ -159,21 +171,32 @@ function Task({ onDelete }) {
                       deleteSubTask={deleteSubtask}
                       toggleSubTaskDone={toggleSubTaskDone}
                     />
-                    
                   ));
                 }
                 return null;
               })}
               <button
+                checked={selectAll}
+                onClick={toggleSelectAll}
+                className="delete-button"
+                disabled={tasks.find((task) => task.id.toString() === id)?.sub.length === 0}
+              >
+                {selectedSubTasks.length === 0 ? 'Select All' : 'Unselect All'}
+              </button>
+              <button
                 onClick={deleteSelectedSubTasks}
                 disabled={selectedSubTasks.length === 0}
-                className='delete-button'
+                className="delete-button"
               >
-                Delete {selectedSubTasks.length} {selectedSubTasks.length === 1 ? 'item' : 'items'}
+                Delete {selectedSubTasks.length}{' '}
+                {selectedSubTasks.length === 1 ? 'item' : 'items'}
               </button>
               <button
                 onClick={deleteAllSubTasks}
-                disabled={tasks.length === 0 || tasks.find(task => task.id.toString() === id)?.sub.length === 0}
+                disabled={
+                  tasks.length === 0 ||
+                  tasks.find((task) => task.id.toString() === id)?.sub.length === 0
+                }
               >
                 Delete All
               </button>
@@ -186,7 +209,7 @@ function Task({ onDelete }) {
             {tasks.map((task) => {
               if (task.id.toString() === id) {
                 return (
-                  <NewSubTaskForm 
+                  <NewSubTaskForm
                     addSubTask={addSubtask}
                     alldone={task.alldone}
                   />
@@ -198,7 +221,6 @@ function Task({ onDelete }) {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
