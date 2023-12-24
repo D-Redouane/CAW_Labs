@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const sourceFolder = './lab6/src'; // Change this to the path of your source folder
-const outputFile = './output.jsx'; // Change this to the desired output file path
+const outputFile = './output.txt'; // Change this to the desired output file path
+const extensions = ['.jsx', '.css']; // files that end with extentions that you want
 
 function concatenateFiles(folderPath, outputFilePath, depth = 0) {
   const files = fs.readdirSync(folderPath);
@@ -18,16 +19,21 @@ function concatenateFiles(folderPath, outputFilePath, depth = 0) {
       // If it's a directory, recursively process its contents
       subfolderContent = concatenateFiles(filePath, outputFilePath, depth + 1);
 
-      // Check if the subfolder contains any .jsx files before adding spaces
+      // Check if the subfolder contains any extension files before adding spaces
       if (subfolderContent && subfolderContent.trim()) {
         folderContent += `\n\n\n\n\n\n\n\n// ${'  '.repeat(depth)}${file}\n${subfolderContent}\n\n`;
       } else {
         folderContent += subfolderContent;
       }
-    } else if (file.endsWith('.jsx')) {
-      // If it's a .jsx file, read its content
-      const fileContentToAdd = fs.readFileSync(filePath, 'utf-8');
-      fileContent += `\n\n\n\n\n\n\n\n// ${path.join(folderPath, file)}\n${fileContentToAdd}`;
+    } else {
+      // If it's a file with one of the specified extensions, read its content
+      for (const extension of extensions) {
+        if (file.endsWith(extension)) {
+          const fileContentToAdd = fs.readFileSync(filePath, 'utf-8');
+          fileContent += `\n\n\n\n\n\n\n\n// ${path.join(folderPath, file)}\n${fileContentToAdd}`;
+          break; // Break the loop once a matching extension is found
+        }
+      }
     }
   });
 

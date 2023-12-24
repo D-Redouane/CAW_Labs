@@ -1,0 +1,463 @@
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,400;1,900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Poppins:ital,wght@0,300;0,700;1,400;1,900&display=swap');
+:root
+{
+    --dark-one:#333;
+    --dark-two:#7a7a7a;
+    --main-color:#784cfb;
+    --light-one:#fff;
+    --light-two:#f9fafb;
+    --light-three:#f6f7fb;
+    --light-four:#e3e4e8;
+}
+/* General Styles */
+*,*::before,*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body, button,textarea,input
+{
+    font-family: 'Lato', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+}
+
+a
+{
+    text-decoration: none;
+}
+
+li
+{
+    list-style: none;
+}
+
+img
+{
+    width: 100%;
+}
+
+.container
+{
+    position: relative;
+    z-index: 5;
+    max-width: 92rem;
+    padding: 0 4rem;
+    margin: 0 auto;
+    transition: 0.3s;
+}
+
+.grid-2
+{
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+    align-items: center;
+    justify-content: center;
+}
+
+.text
+{
+    font-size: 1.25rem;
+    color: var(--dark-two);
+    line-height: 1.6;
+}
+
+.column-1
+{
+    margin-left: 1.5rem;
+}
+
+.column-1 a
+{
+    position: absolute;
+    right: 8rem;
+}
+
+.column-2
+{
+    margin-right: 1.5rem;
+}
+
+.image
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.z-index{
+    position: relative;
+    z-index: 2;
+}
+
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+}
+
+
+
+.overlay .shape{
+    width: initial;
+    opacity: 0.13;
+    position: absolute;
+}
+
+.overlay.overlay-lg .shape {
+    
+    height: 55px;
+}
+
+.overlay.overlay-lg .shape.wave {
+    height: initial;
+    width: 88px;
+}
+
+.overlay.overlay-lg .shape.xshape {
+    height: 38px;
+}
+
+.overlay.overlay-sm .shape {
+    filter: brightness(0) invert(1);
+    opacity: 0.15;
+    height: 40px;
+}
+
+.overlay.overlay-sm .shape.wave {
+    height: initial;
+    width: 70px;
+}
+
+.overlay.overlay-sm .shape.xshape {
+    height: 30px;
+}
+
+.points {
+    opacity: 0.3;
+    position: absolute;
+}  
+
+/* End General Styles */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* Header Styles */
+
+header
+{
+    width: 100%;
+    background-color: var(--light-three);
+    overflow: hidden;
+    position: relative;
+}
+
+nav
+{
+    width: 100%;
+    position: relative;
+    z-index: 50;
+}
+
+nav .container
+{
+    display: flex;
+    justify-content: space-between;
+    height: 6rem;
+    align-items: center;
+}
+/* 
+nav .container:hover
+{
+    background-color: var(--light-four);
+    border-radius: 4rem;
+    transition: 1s;
+} */
+
+.logo
+{
+    width: 90px;
+    display: flex;
+    align-items: center;
+}
+
+.links ul
+{
+    display: flex;
+}
+
+.links a
+{
+    display: inline-block;
+    padding: 0.9rem 1.2rem;
+    color: var(--dark-one);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1;
+    transition: 0.3s;
+}
+
+.links a.active {
+    background-color: var(--main-color);
+    color: var(--light-one);
+    border-radius: 2rem;
+    font-size: 1.05rem;
+    padding: 0.8rem 2.1rem;
+    margin-left: 1rem;
+
+
+    display:inline-block;
+    padding: 0.85rem 2rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.links a:hover
+{
+    color: var(--main-color);
+}
+
+.links a.active:hover
+{
+    color: var(--light-one);
+    background-color: #6b44e0;
+}
+
+.links ul li a div
+{
+    height: 2rem;
+    width: 2rem;
+    position: absolute;
+    right: 4.5rem;
+    bottom: 2.05rem;
+
+}
+.links .active:hover
+{
+    transition: 1s;
+    margin-left: 2rem;
+    padding-right: 3.5rem;
+    
+}
+
+.links .active div
+{
+    opacity: 0;
+    transition: 0.2s;
+
+}
+
+.links .active:hover div
+{
+    opacity: 1;
+    transition: 0.7s;
+}
+
+.header_content .container.grid-2
+{
+    grid-template-columns: 2fr 3fr;
+    min-height: calc(100vh - 6rem);
+    padding-bottom: 2.5rem;
+    text-align: left;
+}
+
+.header_title
+{
+    font-size: 3.8rem;
+    line-height: 0.8;
+    color: var(--dark-one);
+}
+
+.header_content .text
+{
+    margin: 2.15rem 0;
+
+}
+
+.btn
+{
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background-color: var(--main-color);
+    color: var(--light-one);
+    border-radius: 2rem;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn:hover
+{
+    background-color: #6b44e0;
+}
+
+.column-1 .btn img
+{
+    height: 2.5rem;
+    width: 2.5rem;
+    position: absolute;
+    right: 0.3rem;
+    bottom: 0.25rem;
+
+}
+/* .column-1 .btn::after
+{
+    content: "";
+    position: absolute;
+    display: block;
+   
+    width: 120rem;
+    height: 120rem;
+    background: #333; 
+    z-index: 20;   
+} */
+.column-1 .btn:hover
+{
+    transition: 1s;
+    margin-right: 2rem;
+    padding-right: 3.5rem;
+    
+}
+
+.column-1 .btn div
+{
+    opacity: 0;
+    
+    transition: 0.2s;
+}
+
+.column-1 .btn:hover div
+{
+    opacity: 1;
+    transition: 0.7s;
+}
+
+.header_content .image .img-element
+{
+    max-width: 750px;
+}
+
+
+header .points1 {
+    width: 420px;
+    bottom: -75px;
+    right: -150px;
+}
+
+header .points2 {
+    width: 70%;
+    top: 65%;
+    right: 71%;
+    transform: scaleX(-1);
+}
+
+header .square {
+    left: 68%;
+    top: 71%;
+}
+
+header .triangle {
+    left: 7%;
+    bottom: 75%;
+}
+
+header .xshape {
+    left: 4%;
+    bottom: 50%;
+}
+
+header .half-circle1 {
+    right: 50%;
+    bottom: 82%;
+}
+
+header .half-circle2 {
+    right: 5%;
+    top: 67%;
+}
+
+header .wave1 {
+    bottom: 75%;
+    right: 20%;
+}
+
+header .wave2 {
+    bottom: 8%;
+    left: 55%;
+}
+
+header .circle {
+    left: 38%;
+    bottom: 63%;
+
+}
+  
+
+.letters
+{
+    position: absolute;
+    width: 14%;
+    top: -5px;
+    right: 15px;
+    opacity: 0.05;
+}
+
+
+
+header .overlay.overlay-lg img
+{
+    position: absolute !important;
+}
+header .overlay
+{
+    position: absolute !important;
+}
+header .overlay-lg
+{
+    position: absolute !important;
+}
+/* End Header Styles */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+
