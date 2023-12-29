@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-
+ 
 const sourceFolder = './lab6/src'; // Change this to the path of your source folder
 const outputFile = './output.txt'; // Change this to the desired output file path
 const extensions = ['.jsx', '.css']; // files that end with extentions that you want
