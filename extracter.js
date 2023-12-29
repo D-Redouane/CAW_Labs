@@ -7,7 +7,7 @@ const extensions = ['.jsx', '.css']; // files that end with extentions that you 
 
 function concatenateFiles(folderPath, outputFilePath, depth = 0) {
   const files = fs.readdirSync(folderPath);
-
+ 
   let fileContent = '';
   let folderContent = '';
   let subfolderContent = ''; // Initialize subfolderContent here
