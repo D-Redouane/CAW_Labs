@@ -1,0 +1,30 @@
+.contact {
+     position: relative;
+     overflow: hidden;
+}
+
+.background {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+}
+
+.map-bg,
+.contact-bg {
+     position: absolute;
+     width: 100%;
+     height: 50%;
+     background-size: cover;
+}
+
+.map-bg {
+     top: 0;
+     background-image: url("/img/map.png");
+}
+
+.contact-bg {
+     bottom: 0;
+     background-image: url("/img/contact-bg.png");
+}
