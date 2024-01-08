@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-function About() {
+function Skills() {
   // const records_wrap = document.querySelector(".records");
   // const records_numbers = document.querySelectorAll(".number");
 
@@ -62,42 +62,59 @@ function About() {
   }, []);
 
   const data = {
-    aboutInfo: `
-    👋 Hey, I'm Redouane DADDIOUAMER, a Master's student in Science and Technology of Information and Communication (STIC) with a keen interest in web and desktop development.
-    <br /><br />
-    🚀 For my thesis, I built "NTICShip," an internship management app using Laravel and Vue.js. Professionally, I freelanced on "Mahdara," a school management app with AWS deployment.
-    <br /><br />
-    🌐 In my DevOps internship at ValleyCom, I optimized services on AWS EC2 and ensured security with Cloudflare CDN.
-    <br /><br />
-    💡 Fluent in French, English, Arabic, and Berber, I enjoy coding (HTML, CSS, JavaScript, Laravel) and activities like sports, hiking, and photography.
-    <br /><br />
-    🌟 Let's explore the tech world together, where learning and innovation never stop!
-    `,
+    skills: [
+      { title: 'HTML CSS Vanilla-JS', progress: '90%' },
+      { title: 'ECMAScript 6', progress: '75%' },
+      { title: 'VueJS', progress: '60%' },
+      { title: 'ReactJS', progress: '65%' },
+      { title: 'MySQL', progress: '85%' },
+      { title: 'Oracle', progress: '80%' },
+      { title: 'PHP', progress: '75%' },
+      { title: 'Laravel', progress: '70%' },
+      { title: 'Dart', progress: '60%' },
+      { title: 'Flutter', progress: '55%' },
+      { title: 'Java', progress: '70%' },
+      { title: 'JavaFX', progress: '65%' },
+      { title: 'XML', progress: '60%' },
+      { title: 'AWS Services (EC2, RDS, S3)', progress: '75%' },
+      { title: 'CloudFlare', progress: '65%' },
+      { title: 'Docker', progress: '70%' },
+      { title: 'Python', progress: '75%' },
+      { title: 'C++', progress: '60%' },
+    ],
+    githubLink: "https://www.github.com/D-Redouane", // Replace with your actual GitHub link
     imagePaths: {
       points: "./img/shapes/points4.png",
-      about: "./img/Main-image.png",
+      about: "./img/about.png",
     },
   };
 
 
   return (
     <>
-      <div className="about section" id="About">
-        <div className="container">
+      <div className="section" id="skills">
           <div className="section-header">
-            <h3 className="title" data-title="Who Am I">About me</h3>
+            <h3 className="title" data-title="What I Know">Skills</h3>
+          </div>
+        <div className="container testi-content grid-2">
+          <div className="column-1">
+
+            <div className="skills">
+              {data.skills.map((skill, index) => (
+                <div key={index} className={`skill ${skill.title.toLowerCase()}`}>
+                  <h3 className="skill-title">{skill.title}</h3>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{ width: skill.progress }}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <a href={data.githubLink} className="btn">See more on <i className="fa-brands fa-github"></i></a>
           </div>
 
-          <div className="section-body grid-2">
-            <div className="column-1">
-              <h3 className="title-sm">Hello, I'm</h3>
-              <p className="text" dangerouslySetInnerHTML={{ __html: data.aboutInfo }}></p>
-            </div>
-
-            <div className="column-2 image">
-              <img src={data.imagePaths.points} className="points" alt="" />
-              <img src={data.imagePaths.about} className="z-index" alt="" />
-            </div>
+          
+          <div className="column-2 image">
+            <img src={data.imagePaths.about} className="z-index" alt="" />
           </div>
         </div>
 
@@ -107,4 +124,4 @@ function About() {
   )
 }
 
-export default About
+export default Skills

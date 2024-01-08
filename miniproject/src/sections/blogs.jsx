@@ -3,7 +3,7 @@ function Blog() {
 
   return (
     <>
-      <section className="blog section">
+      {/* <div className="blog section" id="Blogs">
         <div className="container">
           <div className="section-header">
             <h3 className="title" data-title="Last News">My blog</h3>
@@ -84,7 +84,7 @@ function Blog() {
             </div>
           </div>
         </div>
-      </section>
+      </div> */}
     </>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavBar = () => {
+const NavBar = ({LandingPage}) => {
   const navbar = React.useRef();
   const links = document.querySelectorAll(".links a");
 
@@ -23,31 +23,43 @@ const NavBar = () => {
 
     navButtons:[
       {
-        link:"/",
+        link:"",
         text:"Home"
       },
       {
-        link:"/Services",
+        link:"Services",
         text:"Services"
       },
+      // {
+      //   link:"Blogs",
+      //   text:"Blogs"
+      // },
       {
-        link:"/Portfolio",
+        link:"Experience",
+        text:"Experiences"
+      },
+      {
+        link:"Skills",
+        text:"Skills"
+      },
+      {
+        link:"Portfolio",
         text:"Portfolio"
       },
       {
-        link:"/About",
+        link:"About",
         text:"About"
       },
       {
-        link:"/Testimonials",
+        link:"Testimonials",
         text:"Testimonials"
       },
       {
-        link:"/Contact",
+        link:"Contact",
         text:"Contact"
       },
       {
-        link:"/HireMe",
+        link:"HireMe",
         text:"HireMe",
         class:"active"
       },
@@ -65,7 +77,7 @@ const NavBar = () => {
           <div className="links">
             <ul>
             {NavData.navButtons.map((element) => {
-              return <li key={element.text}><a href={element.link} className={element.class}>{element.text}</a></li>;
+              return <li key={element.text}><a href={LandingPage?"#"+element.link:"/"+element.link} className={element.class}>{element.text}</a></li>;
             })}
             </ul>
           </div>

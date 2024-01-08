@@ -1,20 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Isotope from 'isotope-layout';
 
-const ALL_FILTER = "*";
-const UI_FILTER = ".ui";
-const WEBDEV_FILTER = ".webdev";
-const APPDEV_FILTER = ".appdev";
-const LOGO_DESIGN_FILTER = ".logo-design";
-
-const filterButtons = [
-  { label: "All", filter: ALL_FILTER },
-  { label: "UI/UX", filter: UI_FILTER },
-  { label: "Web Dev", filter: WEBDEV_FILTER },
-  { label: "Mobile App", filter: APPDEV_FILTER },
-  { label: "Logo Design", filter: LOGO_DESIGN_FILTER },
-];
-
 function Portfolio() {
   const gridRef = useRef(null);
   const isoRef = useRef(null);
@@ -37,18 +23,96 @@ function Portfolio() {
     isoRef.current.arrange({ filter: ALL_FILTER });
   }, []);
 
+  const ALL_FILTER = "*";
+  // const UI_FILTER = ".ui";
+  const WEBDEV_FILTER = ".webdev";
+  const APPDEV_FILTER = ".appdev";
+  // const LOGO_DESIGN_FILTER = ".logo-design";
+
   const filterButtons = [
     { label: "All", filter: ALL_FILTER },
-    { label: "UI/UX", filter: UI_FILTER },
+    // { label: "UI/UX", filter: UI_FILTER },
     { label: "Web Dev", filter: WEBDEV_FILTER },
     { label: "Mobile App", filter: APPDEV_FILTER },
-    { label: "Logo Design", filter: LOGO_DESIGN_FILTER },
+    // { label: "Logo Design", filter: LOGO_DESIGN_FILTER },
   ];
 
+  const portfolioItems = [
+    // { 
+    //   category: 'logo-design', 
+    //   imageSrc: './img/portfolio/port1.jpg', 
+    //   title: 'Logo Design',
+    //   builtwith: 'Adobe XD',
+    //   class:"fab fa-github" ,
+    //   link:"https://www.github.com" 
+    // },
+    { 
+      category: 'webdev', 
+      imageSrc: './img/portfolio/viva.jpg', 
+      title: 'Viva API' , 
+      builtwith: 'Laravel (Lumen)', 
+      class:"fab fa-github" ,
+      link:"https://github.com/D-Redouane/vivapp" 
+    },
+    { 
+      category: 'appdev', 
+      imageSrc: './img/portfolio/viva-app.jpg', 
+      title: 'Viva Application' , 
+      builtwith: 'Flutter', 
+      class:"fab fa-github" ,
+      link:"https://github.com/D-Redouane/flutter_vivapp" 
+    },
+    { 
+      category: 'webdev', 
+      imageSrc: './img/portfolio/portfolio.jpg', 
+      title: 'Portfoilo' , 
+      builtwith: 'React bootstrap jquery swiper', 
+      class:"fab fa-github" ,
+      link:"https://github.com/D-Redouane/CAW_Labs/tree/main/miniproject" 
+    },
+    { 
+      category: 'webdev', 
+      imageSrc: './img/portfolio/nticship.jpg', 
+      title: 'NTICShip', 
+      builtwith: 'Laravel vuejs vuex', 
+      class:"fab fa-github" ,
+      link:"https://github.com/nticship/nticship" 
+    },
+    { 
+      category: 'webdev', 
+      imageSrc: './img/portfolio/chatinit.jpg', 
+      title: 'Chat Ui', 
+      builtwith: 'Html Css Js', 
+      class:"fab fa-github" ,
+      link:"https://github.com/D-Redouane/ChatInit" 
+    },
+    // { 
+    //   category: 'logo-design', 
+    //   imageSrc: './img/portfolio/port7.jpg', 
+    //   title: 'Logo Design', 
+    //   builtwith: 'Adobe XD', 
+    //   class:"fab fa-github" 
+    // },
+    // { 
+    //   category: 'appdev ui', 
+    //   imageSrc: './img/portfolio/port8.png', 
+    //   title: 'App Development', 
+    //   builtwith: 'Adobe XD', 
+    //   class:"fab fa-github" 
+    // },
+    // { 
+    //   category: 'ui webdev', 
+    //   imageSrc: './img/portfolio/port9.png', 
+    //   title: 'Web Design', 
+    //   builtwith: 'Adobe XD', 
+    //   class:"fab fa-github," 
+    // },
+  ];
+  
 
   return (
     <>
-      <div className="portfolio section" id="portfolio">
+      <div className="portfolio section" id="Portfolio">
         <div className="background-bg">
           <div className="overlay overlay-sm">
             <img
@@ -93,118 +157,26 @@ function Portfolio() {
             </div>
 
             <div className="grid" ref={gridRef}>
-              <div className="grid-item logo-design">
-                <div className="gallery-image">
-                  <img src="./img/portfolio/port1.jpg" alt="" />
-                  <div className="img-overlay">
-                    <div className="plus"></div>
-                    <div className="img-description">
-                      <h3>Logo Design</h3>
-                      <h5>View Demo</h5>
+              {portfolioItems.map((item, index) => (
+                <div key={index} className={`grid-item ${item.category}`}>
+                  <div className="gallery-image">
+                    <img src={item.imageSrc} alt="" />
+                    <div className="img-overlay">
+                      {item.link?<i className={item.class+" preview-icon"} onClick={() => window.open(item.link, '_blank')} style={{cursor:'alias'}}></i>:null}
+                      <div className="img-description">
+                        <h3>{item.title}</h3>
+                        <h5>{item.builtwith}</h5>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="grid-item webdev">
-                <div className="gallery-image">
-                  <img src="./img/portfolio/port2.png" alt="" />
-                  <div className="img-overlay">
-                    <div className="plus"></div>
-                    <div className="img-description">
-                      <h3>Web Development</h3>
-                      <h5>View Demo</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="grid-item ui webdev">
-                <div className="gallery-image">
-                  <img src="./img/portfolio/port3.png" alt="" />
-                  <div className="img-overlay">
-                    <div className="plus"></div>
-                    <div className="img-description">
-                      <h3>Web Design</h3>
-                      <h5>View Demo</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="grid-item ui">
-                <div className="gallery-image">
-                  <img src="./img/portfolio/port4.png" alt="" />
-                  <div className="img-overlay">
-                    <div className="plus"></div>
-                    <div className="img-description">
-                      <h3>UI / UX Design</h3>
-                      <h5>View Demo</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="grid-item logo-design">
-                <div className="gallery-image">
-                  <img src="./img/portfolio/port5.jpg" alt="" />
-                  <div className="img-overlay">
-                    <div className="plus"></div>
-                    <div className="img-description">
-                      <h3>Logo Design</h3>
-                      <h5>View Demo</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="grid-item appdev">
-                <div className="gallery-image">
-                  <img src="./img/portfolio/port6.jpg" alt="" />
-                  <div className="img-overlay">
-                    <div className="plus"></div>
-                    <div className="img-description">
-                      <h3>App Development</h3>
-                      <h5>View Demo</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="grid-item logo-design">
-                <div className="gallery-image">
-                  <img src="./img/portfolio/port7.jpg" alt="" />
-                  <div className="img-overlay">
-                    <div className="plus"></div>
-                    <div className="img-description">
-                      <h3>Logo Design</h3>
-                      <h5>View Demo</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="grid-item appdev ui">
-                <div className="gallery-image">
-                  <img src="./img/portfolio/port8.png" alt="" />
-                  <div className="img-overlay">
-                    <div className="plus"></div>
-                    <div className="img-description">
-                      <h3>App Development</h3>
-                      <h5>View Demo</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="grid-item ui webdev">
-                <div className="gallery-image">
-                  <img src="./img/portfolio/port9.png" alt="" />
-                  <div className="img-overlay">
-                    <div className="plus"></div>
-                    <div className="img-description">
-                      <h3>Web Design</h3>
-                      <h5>View Demo</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-            <div className="more-folio">
+
+            {/* <div className="more-folio">
               <a href="#" className="btn">More Folio</a>
-            </div>
+            </div> */}
+            
           </div>
         </div>
       </div>

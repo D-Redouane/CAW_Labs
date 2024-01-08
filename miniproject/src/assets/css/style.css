@@ -2201,3 +2201,17 @@ header .circle {
 }
 
 /* End Responsive */
+
+.preview-icon {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8rem; /* Adjust the size as needed */
+}
+
+.card-sp{
+  margin: 10px 10px 10px 10px;
+  border-radius: 0.9rem;
+  border: 1px solid #6b44e0;
+}

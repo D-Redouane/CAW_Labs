@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-function Footer({ LandingPage }) {
+function Footer({ LandingPage,ServicesRoutePage }) {
   // const footerInputRef = useRef(null);
 
   // const handleFocus = () => {
@@ -18,11 +18,47 @@ function Footer({ LandingPage }) {
     {
       title: "Links",
       items: [
-        { text: "Services", link: "/services" },
-        { text: "Portfolio", link: "/portfolio" },
-        { text: "About", link: "/about" },
-        { text: "Testimonials", link: "/testimonials" },
-        { text: "Contact", link: "/contact" },
+        {
+          link:"",
+          text:"Home"
+        },
+        {
+          link:"Services",
+          text:"Services"
+        },
+        // {
+        //   link:"Blogs",
+        //   text:"Blogs"
+        // },
+        {
+          link:"Experience",
+          text:"Experiences"
+        },
+        {
+          link:"Skills",
+          text:"Skills"
+        },
+        {
+          link:"Portfolio",
+          text:"Portfolio"
+        },
+        {
+          link:"About",
+          text:"About"
+        },
+        {
+          link:"Testimonials",
+          text:"Testimonials"
+        },
+        {
+          link:"Contact",
+          text:"Contact"
+        },
+        {
+          link:"HireMe",
+          text:"HireMe",
+          class:"active"
+        },
       ],
     },
   ];
@@ -62,11 +98,12 @@ function Footer({ LandingPage }) {
   ];
 
   const servicesData = [
-    { text: "Web Design", link: "#webdesign" },
+    // { text: "Web Design", link: "#webdesign" },
     { text: "Web Dev", link: "#webdev" },
-    { text: "App Design", link: "#appdesign" },
-    { text: "Marketing", link: "#marketing"},
-    { text: "UI Design", link: "#ui" },
+    { text: "App Dev", link: "#appdev" },
+    // { text: "App Design", link: "#appdesign" },
+    // { text: "Marketing", link: "#marketing"},
+    // { text: "UI Design", link: "#ui" },
   ];
 
   const followMe = [
@@ -101,7 +138,7 @@ function Footer({ LandingPage }) {
                 <ul>
                   {element.items.map((item, itemIndex) => (
                     <li key={itemIndex}>
-                      <a href={item.link}>{item.text}</a>
+                      <a href={LandingPage?"#"+item.link:"/"+item.link}>{item.text}</a>
                     </li>
                   ))}
                 </ul>
@@ -122,7 +159,7 @@ function Footer({ LandingPage }) {
               </ul>
             </div>
 
-            {LandingPage? (
+            {ServicesRoutePage || LandingPage ? (
             <div className="grid-4-col footer-links" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
               <h3 className="title-sm">Services</h3>
               <ul>

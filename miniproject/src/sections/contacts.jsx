@@ -72,7 +72,7 @@ function Contacts() {
 
   return (
     <>
-      <div className="contact" id="contact">
+      <div className="contact" id="Contact">
         <div className="background">
           <div className="map-bg"></div>
           <div className="contact-bg"></div>

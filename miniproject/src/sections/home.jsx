@@ -24,7 +24,7 @@ function Home() {
   return (
     <>
       <OverLay />
-      <div className="header-content">
+      <div className="header-content" id='Home'>
         <div className="container grid-2">
           <div className="column-1">
             <h1 className="header-title">{HomeData.Title}</h1>

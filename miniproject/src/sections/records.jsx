@@ -46,8 +46,14 @@ function Records() {
     };
 
   }, []);
-  
 
+
+  const recordData = [
+    { num: 15, title: "Projects", class:"record-circle" },
+    { num: 5, title: "Happy Clients", class:"record-circle" },
+    { num: 250, title: "Work Hour", class:"record-circle active" },
+    { num: 3, title: "Awards", class:"record-circle" },
+  ];
 
   return (
     <>
@@ -67,34 +73,15 @@ function Records() {
           <img src="./img/shapes/triangle.png" alt="" className="shape triangle" />
         </div>
 
-        <div className="container">
-          <div className="wrap">
-            <div className="record-circle">
-              <h2 className="number" data-num="235">0</h2>
-              <h4 className="sub-title">Projects</h4>
+        <div className="container" style={{justifyContent:'space-evenly',display:'flex'}}>
+          {recordData.map((record, index) => (
+            <div key={index} className="wrap">
+              <div className={record.class}>
+                <h2 className="number" data-num={record.num}>0</h2>
+                <h4 className="sub-title">{record.title}</h4>
+              </div>
             </div>
-          </div>
-
-          <div className="wrap">
-            <div className="record-circle active">
-              <h2 className="number" data-num="174">0</h2>
-              <h4 className="sub-title">Happy Clients</h4>
-            </div>
-          </div>
-
-          <div className="wrap">
-            <div className="record-circle">
-              <h2 className="number" data-num="892">0</h2>
-              <h4 className="sub-title">Work Hour</h4>
-            </div>
-          </div>
-
-          <div className="wrap">
-            <div className="record-circle">
-              <h2 className="number" data-num="368">0</h2>
-              <h4 className="sub-title">Awards</h4>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </>

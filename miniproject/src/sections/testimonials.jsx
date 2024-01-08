@@ -8,6 +8,37 @@ function Testimonials() {
   const swiperContainerRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
 
+  const testimonialsData = [
+    {
+      quote: "Working with this team was an amazing experience. Their creativity and attention to detail surpassed my expectations. I highly recommend them!",
+      rating: 3,
+      name: "Emily Johnson",
+      job: "Graphic Designer, New York",
+      link:"https://github.com/"
+    },
+    {
+      quote: "I've been a client for years, and the quality of their service has never wavered. Professionalism and efficiency are their strengths. Great job!",
+      rating: 3.5,
+      name: "Michael Rodriguez",
+      job: "Marketing Manager, Los Angeles",
+      link:"https://github.com/"
+    },
+    {
+      quote: "The team at this company is exceptional. They understand the client's needs and deliver outstanding results. It's a pleasure working with them.",
+      rating: 4.5,
+      name: "Sophia Williams",
+      job: "Business Owner, Chicago",
+      link:"https://github.com/"
+    },
+    {
+      quote: "Incredible attention to detail and a collaborative approach make them stand out. I'm impressed with the results and would choose them again.",
+      rating: 6,
+      name: "David Carter",
+      job: "UX Designer, San Francisco",
+      link:"https://github.com/"
+    },
+  ];
+
   useEffect(() => {
     if (!swiperInstance) {
       const newSwiper = new Swiper(swiperContainerRef.current, {
@@ -41,9 +72,23 @@ function Testimonials() {
     }
   };
 
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+
+    const stars = [];
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<i key={i} className="fas fa-star"></i>);
+    }
+    if (hasHalfStar) {
+      stars.push(<i key={stars.length} className="fas fa-star-half-alt"></i>);
+    }
+    return stars;
+  };
+
   return (
     <>
-      <div className="testimonials section" id="testimonials">
+      <div className="testimonials section" id="Testimonials">
         <div className="container">
           <div className="section-header">
             <h3 className="title" data-title="What People Say">Testimonials</h3>
@@ -53,95 +98,18 @@ function Testimonials() {
             <div className="column-1 reviews">
               <div className="swiper-container" ref={swiperContainerRef}>
                 <div className="swiper-wrapper">
-                  <div className="swiper-slide review">
-                    <i className="fas fa-quote-left quote"></i>
-                    <div className="rate">
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
+                  {testimonialsData.map((testimonial, index) => (
+                    <div className="swiper-slide review" key={index}>
+                      <i className="fas fa-quote-left quote"></i>
+                      <div className="rate">{renderStars(testimonial.rating)}</div>
+                      <p className="review-text">{testimonial.quote}</p>
+                      <div className="review-info" style={testimonial.link?{cursor: 'pointer'}:null} onClick={() => {testimonial.link? window.open(testimonial.link, '_blank'): null}}>
+                        <h3 className="review-name">{testimonial.name}</h3>
+                        <h5 className="review-job">{testimonial.job}</h5>
+                      </div>
                     </div>
-
-                    <p className="review-text">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Laudantium adipisci veniam debitis quas, sapiente
-                      repellendus mollitia. Laboriosam labore voluptate quos?
-                    </p>
-
-                    <div className="review-info">
-                      <h3 className="review-name">Matias Butt</h3>
-                      <h5 className="review-job">Photographer, Paris</h5>
-                    </div>
-                  </div>
-
-                  <div className="swiper-slide review">
-                    <i className="fas fa-quote-left quote"></i>
-                    <div className="rate">
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                    </div>
-
-                    <p className="review-text">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Fugiat voluptate consequatur aut tenetur fugit error
-                      molestiae quaerat ex odio rem?
-                    </p>
-
-                    <div className="review-info">
-                      <h3 className="review-name">Romeo Herbert</h3>
-                      <h5 className="review-job">CEO, Munich</h5>
-                    </div>
-                  </div>
-
-                  <div className="swiper-slide review">
-                    <i className="fas fa-quote-left quote"></i>
-                    <div className="rate">
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                    </div>
-
-                    <p className="review-text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Cupiditate voluptatum enim nemo quod amet dolorum aliquam,
-                      sapiente omnis eaque consectetur.
-                    </p>
-
-                    <div className="review-info">
-                      <h3 className="review-name">Jack Costa</h3>
-                      <h5 className="review-job">Director of THR, London</h5>
-                    </div>
-                  </div>
-
-                  <div className="swiper-slide review">
-                    <i className="fas fa-quote-left quote"></i>
-                    <div className="rate">
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                    </div>
-
-                    <p className="review-text">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Perspiciatis ab incidunt, dicta quam inventore ipsum
-                      dolor. Consectetur nam incidunt error!
-                    </p>
-
-                    <div className="review-info">
-                      <h3 className="review-name">Reiss Mccartney</h3>
-                      <h5 className="review-job">Engineer, San Francisco</h5>
-                    </div>
-                  </div>
+                  ))}
                 </div>
-
                 <div className="review-nav swiper-button-prev" onClick={handlePrevClick}>
                   <i className="fas fa-long-arrow-alt-left"></i>
                 </div>
@@ -150,7 +118,6 @@ function Testimonials() {
                 </div>
               </div>
             </div>
-
             <div className="column-2 image">
               <img src="./img/testi.png" alt="" className="img-element" />
             </div>
