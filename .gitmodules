@@ -1,0 +1,3 @@
+[submodule "miniproject"]
+    path = miniproject
+    url = https://github.com/D-Redouane/miniproject.git
